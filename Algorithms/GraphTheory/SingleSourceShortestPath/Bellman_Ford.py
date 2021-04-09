@@ -9,6 +9,7 @@ Algo:
 3. for every edge in the grapph, try performing edge relaxation one more time.
    if edge relaxation possible, then graph has -ve cycles.
    
+Time : O(VE)
 """
 
 class Bellman_Ford:
