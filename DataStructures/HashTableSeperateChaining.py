@@ -31,7 +31,24 @@ class hashTable:
             
         return hashnum % self.capacity
         
+    def update(self, key, value):
+        index = self.hash(key)
+        node  = self.buckets[index]
+        
+        while node.key != key:
+            node = node.next
+            
+        node.value = value
+        
     def insert(self, key, value):
+        
+        #if key already present, update the value with new value and return
+        val = self.find(key)
+        if val is not None and val != value:
+            self.update(key, value)
+            return
+        
+        # key not present, create a new node and append at the index.
         self.size += 1
         
         index = self.hash(key)
@@ -86,24 +103,9 @@ class hashTable:
             
             
 ht = hashTable()
-ht.insert('A', 5)
-print(ht.size)
-print(ht.find('A'))
-print(ht.remove('A'))
-print(ht.find('A'))
-print(ht.size)
-ht.insert('A', 5)
-ht.insert('B', 15)
 ht.insert('C', 25)
-ht.insert('D', 52)
-ht.insert('E', 54)
 print(ht.size)
-print(ht.find('E'))
-print(ht.buckets)
-
-print(ht.find('E'))
-ht.insert('C', 25)
 print(ht.find('C'))
-print(ht.remove('A'))
-print(ht.remove('B'))
+ht.insert('C', 36)
 print(ht.size)
+print(ht.find('C'))
