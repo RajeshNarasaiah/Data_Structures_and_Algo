@@ -19,7 +19,7 @@ def kmp(T, P):
     print(LPS)
     for idx in range(0, n):
         while q > 0 and P[q] != T[idx]:
-            q = LPS[q - 1]
+            q = LPS[q - 1]# note q - 1
         if P[q] == T[idx]:
             q += 1
         if q == m:
