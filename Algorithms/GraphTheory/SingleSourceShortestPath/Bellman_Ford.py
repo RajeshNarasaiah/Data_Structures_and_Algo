@@ -29,11 +29,12 @@ class Bellman_Ford:
             for u, v, w in self.graph:
                 if dist[u] != float('inf') and dist[u] + w < dist[v]:
                     dist[v] = dist[u] + w
-
-        for u, v, w in self.graph:
-            if dist[u] != float('inf') and dist[u] + w < dist[v]:
-                print('graph has -ve cycles')
-                return
+                  
+        for _ in range(self.num_nodes - 1):
+            for u, v, w in self.graph:
+               if dist[u] != float('inf') and dist[u] + w < dist[v]:
+                  print('graph has -ve cycles')
+                  return
             
         print(dist)
         
